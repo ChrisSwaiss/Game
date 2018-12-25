@@ -1,6 +1,5 @@
-pos = [0]*10, [0]*10
+import os
 x, y = 1, 1
-
 def drawmap(x, y):
 	for i in range(10):
 		for j in range(10):
@@ -10,9 +9,11 @@ def drawmap(x, y):
 				print ("0", end = " ")
 		print("")
 
-drawmap(x, y)
 while True:
-	movement = input("Please enter W, S, A, or D")
+	os.system("cls")
+	drawmap(x, y)
+	movement = input("""Please enter W, S, A, or D
+""")
 	if movement.upper() == 'A':
 		x -= 1
 	elif movement.upper() == 'S':
@@ -23,8 +24,14 @@ while True:
 		y -= 1
 	#elif movement.upper() == 'EXIT':
 		#close game
+	if x>9:
+		x = 9
+	elif y>9:
+		y = 9
+	elif y<0:
+		y = 0
+	elif x<0:
+		x = 0
 
-	drawmap(x, y)
 
-#limit movement to map, figure out how to make exit command work,
-#dont redraw map every time
+#figure out how to make exit command work, tidy up code, mery crimis
